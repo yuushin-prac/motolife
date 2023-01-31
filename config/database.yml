@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  host: <%= ENV["HOST"] %>
+  port: 5432
+
+development:
+  <<: *default
+  database: moto_life_development
+
+test:
+  <<: *default
+  database: moto_life_test
+
+production:
+  <<: *default
+  database: moto_life_production
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
