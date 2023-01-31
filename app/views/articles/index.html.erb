@@ -1,0 +1,10 @@
+  <h1 class="text-center">新規記事一覧</h1>
+  <% @articles.each do |article| %>
+    <%= link_to article do %>
+    <div class="col-md-3">
+      <%= image_tag 'protein_bar.png', class: 'img-responsive' %>
+      <p class="title"><%= article.title %></p>
+      <p><%= article.body %></p>
+    </div>
+    <% end %>
+  <% end %>
