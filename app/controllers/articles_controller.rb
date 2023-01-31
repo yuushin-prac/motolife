@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
     if @article.save
       redirect_to @article, notice: "作成に成功しました"
     else
@@ -50,4 +52,5 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :body)
   end
+
 end
