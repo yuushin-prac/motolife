@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.order(created_at: :desc)
+    @articles = Article.includes(:user).order(created_at: :desc)
   end
 
   def show
@@ -14,10 +15,11 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
     if @article.save
-      redirect_to @article, notice: "作成に成功しました"
+      redirect_to @article, notice: "記事を投稿しました"
     else
-      render :new, alert: "作成できませんでした"
+      render :new, alert: "作成に失敗しました"
     end
 
   end
@@ -26,7 +28,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article, notice: "記事を更新しました"
     else
-      render :edit, alert: "更新できませんでした"
+      render :edit, alert: "更新に失敗しました"
     end
   end
 
@@ -35,9 +37,9 @@ class ArticlesController < ApplicationController
   
   def destroy
     if @article.destroy
-      redirect_to root_path, notice: "削除しました"
+      redirect_to root_path, notice: "投稿を削除しました"
     else
-      redirect_to root_path, notice: "削除できませんでした"
+      redirect_to root_path, alert: "削除に失敗しました"
     end
   end
 
@@ -50,4 +52,5 @@ class ArticlesController < ApplicationController
   def article_params
     params.require(:article).permit(:title, :body)
   end
+
 end

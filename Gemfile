@@ -19,6 +19,7 @@ gem "sass-rails"
 gem "image_processing", "~> 1.2"
 gem 'seed_dump'
 gem "bootstrap-sass"
+gem "devise"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
