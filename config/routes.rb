@@ -4,5 +4,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   resources :articles
+  resources :users, only: :show
   root "articles#index"
 end

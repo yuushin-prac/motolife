@@ -91,5 +91,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => motolife.onrender.com, :protocol => 'https'}
+  #config.action_mailer.default_url_options = { host: 'https://motolife.onrender.com' }
 end
