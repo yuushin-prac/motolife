@@ -2,8 +2,12 @@
 
     <% @articles.each do |article| %>
       <%= link_to article do %>
-      <div class="col-md-3">
-        <%= image_tag 'protein_bar.png', class: 'img-responsive' %>
+      <div class="col-md-4">
+        <% if article.image_id.present? %>
+          <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-image' %>
+        <% else %>
+          <%= image_tag 'no_image.png', class: 'img-responsive center-block article-image' %>
+        <% end %>
         <p class="title"><%= article.title %></p>
         <p><%= article.body %></p>
       </div>

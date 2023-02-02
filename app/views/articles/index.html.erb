@@ -1,8 +1,12 @@
   <h1 class="text-center">新規記事一覧</h1>
   <% @articles.each do |article| %>
     <%= link_to article do %>
-    <div class="col-md-3">
-      <%= image_tag 'protein_bar.png', class: 'img-responsive' %>
+    <div class="col-md-4 article-block article-list">
+      <% if article.image_id.present? %>
+        <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-images' %>
+      <% else %>
+        <%= image_tag 'no_image.png', class: 'img-responsive center-block article-images' %>
+      <% end %>
       <p class="title"><%= article.title %></p>
       <p><%= article.body %></p>
     </div>

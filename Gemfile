@@ -20,6 +20,9 @@ gem "image_processing", "~> 1.2"
 gem 'seed_dump'
 gem "bootstrap-sass"
 gem "devise"
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+gem "font-awesome-rails"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

@@ -1,4 +1,9 @@
-<%= image_tag 'protein_bar.png', class: 'img-responsive center-block' %>
+<% if @article.image_id.present? %>
+  <%= attachment_image_tag @article, :image, class: 'img-responsive center-block' %>
+<% else %>
+  <%= image_tag 'no_image.png', class: 'img-responsive center-block' %>
+<% end %>
+
 <p class="title"><%= @article.title %></p>
 <a href="/users/<%= @article.user.id %>">
 <span>投稿者</span><%= @article.user.name %>
@@ -6,6 +11,6 @@
 <p><%= simple_format @article.body %></p>
 <% if user_signed_in? && @article.user_id == current_user.id %>
   <%= link_to '編集', edit_article_path(@article), class: 'btn btn-primary' %>
-  <%= link_to '削除する', article_path(@article), data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" }, 
+  <%#= link_to '削除する', article_path(@article), data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" }, 
                                                                                               class: 'btn btn-danger' %>
 <% end %>

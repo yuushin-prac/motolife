@@ -1,7 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 body { padding-top: 70px; }
+
+//--------------- articles/index ------------------//
+
+.article-list {
+  margin: 40px 0px;
+  border: solid 1px gray;
+}
 
 .title {
   font-size: 24px;
@@ -10,3 +18,30 @@ body { padding-top: 70px; }
 a {
   color: rgb(34, 34, 34);
 }
+
+.article-images {
+  max-height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+//---------------------------------------//
+
+//--------------- articles/_form ------------------//
+
+.article-image {
+  max-height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border: solid 1px gray;
+}
+
+#cover-image {
+  cursor: pointer;
+}
+
+// #article_image {
+//   display: none;
+// }
+
+//---------------------------------------//
