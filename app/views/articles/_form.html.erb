@@ -1,4 +1,14 @@
 <%= form_for @article do |f| %>
+
+  <div id="cover-image" class="form-group">
+    <% if @article.image_id.present? %>
+      <%= attachment_image_tag @article, :image, class: 'article-image img-responsive center-block' %>
+    <% else %>
+      <%= image_tag 'no_image.png', class: 'article-image' %>
+    <% end %>
+  </div>
+  <%= f.file_field :image %>
+
   <div class="form-group">
     <%= f.label :title , 'タイトル' %>
     <%= f.text_field :title, class: "form-control" %>
