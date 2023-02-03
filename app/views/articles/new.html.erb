@@ -1,6 +1,28 @@
 <% provide(:button_text, '新規作成') %>
+<%= render "devise/shared/error_messages", resource: @article %>
 
 <h1 class="text-center">記事の新規作成</h1>
 <div class="col-md-6 col-md-offset-3">
-  <%= render 'form', article: @article %>
+  <%= form_for @article do |f| %>
+    <div id="cover-image" class="form-group">
+      <% if @article.image_id.present? %>
+        <%= attachment_image_tag @article, :image, class: 'article-image img-responsive center-block' %>
+      <% else %>
+        <%= image_tag 'no_image.png', class: 'article-image' %>
+      <% end %>
+    </div>
+    <%= f.file_field :image %>
+
+    <div class="form-group">
+      <%= f.label :title , 'タイトル' %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body, '内容' %>
+      <%= f.text_area :body, rows: 10, class: "form-control" %>
+    </div>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <% end %>
 </div>

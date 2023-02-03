@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, notice: "記事を投稿しました"
     else
-      render :new, alert: "作成に失敗しました"
+      render :new, status: :unprocessable_entity
     end
 
   end
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article, notice: "記事を更新しました"
     else
-      render :edit, alert: "更新に失敗しました"
+      render :edit, status: :unprocessable_entity
     end
   end
 

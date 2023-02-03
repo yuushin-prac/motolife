@@ -1,15 +1,25 @@
-  <p><%= @name %>さんの投稿一覧</p>
+<div class="profile">
+  <p class="text-center"><%= @user.name %></p>
+  <% if user_signed_in? && @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn-sm btn-success" %></p>
+  <% end %>
+  <div>
+    <%= attachment_image_tag @user, :profile_image, class: 'img-responsive center-block' %>
+    <%= @user.self_introduction %>
+  </div>
+</div>
 
-    <% @articles.each do |article| %>
-      <%= link_to article do %>
-      <div class="col-md-4">
-        <% if article.image_id.present? %>
-          <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-image' %>
-        <% else %>
-          <%= image_tag 'no_image.png', class: 'img-responsive center-block article-image' %>
-        <% end %>
-        <p class="title"><%= article.title %></p>
-        <p><%= article.body %></p>
-      </div>
+<p class="text-center"><%= @user.name %>さんの投稿一覧</p>
+  <% @user.articles.each do |article| %>
+    <%= link_to article do %>
+    <div class="col-md-4">
+      <% if article.image_id.present? %>
+        <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-image' %>
+      <% else %>
+        <%= image_tag 'no_image.png', class: 'img-responsive center-block article-image' %>
       <% end %>
-      <% end %>
+      <p class="title"><%= article.title %></p>
+      <p><%= article.body %></p>
+    </div>
+    <% end %>
+  <% end %>
