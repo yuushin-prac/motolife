@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :articles, dependent: :destroy
   delegate :name, to: :profile
+  attachment :profile_image
 end

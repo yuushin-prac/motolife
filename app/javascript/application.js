@@ -10,6 +10,11 @@ $(document).on('click', "#cover-image", function() {
   return false;
 });
 
+$(document).on('click', "#cover-image", function() {
+  $("#user_profile_image").click();
+  return false;
+});
+
 $(function(){
   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
   $(document, '#article_image').on('change', function(e) {
