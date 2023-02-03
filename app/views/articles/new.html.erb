@@ -1,5 +1,5 @@
 <% provide(:button_text, '新規作成') %>
-
+<%= render "devise/shared/error_messages", resource: @article %>
 <h1 class="text-center">記事の新規作成</h1>
 <div class="col-md-6 col-md-offset-3">
   <%= render 'form', article: @article %>
