@@ -1,18 +1,39 @@
-  <h1 class="text-center">新規記事一覧</h1>
-  
-  <% @articles.each do |article| %>
-    <%= link_to article do %>
-    <div class="col-md-4 article-block article-list">
-      <% if article.image_id.present? %>
-        <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-images' %>
-      <% else %>
-        <%= image_tag 'no_image.png', class: 'img-responsive center-block article-images' %>
-      <% end %>
-      <p class="title"><%= article.title %></p>
-      <a href="/users/<%= article.user.id %>">
-        <span>投稿者</span><%= article.user.name %>
-      </a>
-      <p class="text-right"><%= article.created_at.strftime("%Y年%m月%d日") %></p>
+<% if user_signed_in? %>
+<% else %>
+  <section class="jumbotron text-center" style="margin-top: 20px">
+    <div class="container">
+      <h1 class="jumbotron-heading" style="font-size: 40px">モトlife</h1>
+      <p class="lead text-muted">バイク系ブログサービス</p>
     </div>
-    <% end %>
-  <% end %>
+  </section>
+<% end %>
+  
+<h1 class="new-articles">新規記事一覧</h1>
+<% @articles.each do |article| %>
+  <div class="col-12 col-sm-6 col-md-4 article-list">
+    <div class="article-box">
+      <%= link_to article do %>
+        <% if article.image_id.present? %>
+          <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-images' %>
+        <% else %>
+          <%= image_tag 'no_image.png', class: 'img-responsive center-block article-images' %>
+        <% end %>
+      <% end %>
+      <div class="article-body">
+        <%= link_to article.title.truncate(20), article_path(article), style: 'font-size: 24px;' %>
+        <% if article.body.length > 40 %>
+          <p class="body">
+            <%= article.body.truncate(40) %>
+            <%= link_to "続きを読む", article_path(article), class: 'link' %>
+          </p>
+        <% else %>
+          <p class="body"><%= article.body %></p>
+        <% end %>
+        <div class="info">
+          <a class="link" href="/users/<%= article.user.id %>">@<%= article.user.name %></a>
+          <p><%= article.created_at.strftime("%Y年%m月%d日") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
