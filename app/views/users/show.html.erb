@@ -1,25 +1,42 @@
-<div class="profile">
-  <p class="text-center"><%= @user.name %></p>
-  <% if user_signed_in? && @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn-sm btn-success" %></p>
-  <% end %>
-  <div>
-    <%= attachment_image_tag @user, :profile_image, class: 'img-responsive center-block' %>
-    <%= @user.self_introduction %>
-  </div>
-</div>
-
-<p class="text-center"><%= @user.name %>さんの投稿一覧</p>
-  <% @user.articles.each do |article| %>
-    <%= link_to article do %>
-    <div class="col-md-4">
-      <% if article.image_id.present? %>
-        <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-image' %>
+<div class="row" style="border-left: 1px solid rgba(0,0,0,.125)">
+  
+  <div class="col-sm-3">
+    <div class="sidebar">
+      <h3 class="sideMenuTitle">プロフィール</h3>
+      <% if @user.profile_image_id.present? %>
+        <%= attachment_image_tag @user, :profile_image, class: 'center-block sideMenuImage' %>
       <% else %>
-        <%= image_tag 'no_image.png', class: 'img-responsive center-block article-image' %>
+        <%= image_tag 'no_image.png', class: 'img-responsive center-block sideMenuImage' %>
       <% end %>
-      <p class="title"><%= article.title %></p>
-      <p><%= article.body %></p>
+      <h3><%= @user.name %></h3>
+      <%= @user.self_introduction %>
+      <% if user_signed_in? && @user == current_user %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn-sm btn-success" %></p>
+      <% end %>
     </div>
-    <% end %>
+  </div>
+<div class="col-sm-9 show-article-list">
+  <% @user.articles.reverse_each do |article| %>
+    <div class="show-article-box">
+      <%= link_to article do %>
+        <% if article.image_id.present? %>
+          <%= attachment_image_tag article, :image, class: 'img-responsive center-block show-article-images' %>
+        <% else %>
+          <%= image_tag 'no_image.png', class: 'img-responsive center-block show-article-images' %>
+        <% end %>
+      <% end %>
+      <div class="show-article-body">
+        <%= link_to article.title.truncate(15), article_path(article), style: 'font-size: 24px;' %>
+        <% if article.body.length > 40 %>
+          <p class="body">
+            <%= article.body.truncate(40) %>
+            <%= link_to "続きを読む", article_path(article), class: 'link' %>
+          </p>
+        <% else %>
+          <p class="body"><%= article.body %></p>
+        <% end %>
+        <p class="info" style="margin-right: 20px"><%= article.created_at.strftime("%Y年%m月%d日") %></p>
+      </div>
+    </div>
   <% end %>
+</div>

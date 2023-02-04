@@ -1,0 +1,10 @@
+<div class="sidebar">
+  <h3 class="sideMenuTitle"><%= yield(:sidebar_title) %></h3>
+  <% if @user.profile_image_id.present? %>
+    <%= attachment_image_tag @user, :profile_image, class: 'center-block sideMenuImage' %>
+  <% else %>
+    <%= image_tag 'no_image.png', class: 'img-responsive center-block sideMenuImage' %>
+  <% end %>
+  <h3><%= link_to @article.user.name, user_path(@user) %></h3>
+  <%= @user.self_introduction %>
+</div>
