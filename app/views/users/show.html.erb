@@ -16,7 +16,7 @@
     </div>
   </div>
 <div class="col-sm-9 show-article-list">
-  <% @user.articles.reverse_each do |article| %>
+  <% @articles.each do |article| %>
     <div class="show-article-box">
       <%= link_to article do %>
         <% if article.image_id.present? %>
@@ -39,4 +39,7 @@
       </div>
     </div>
   <% end %>
+  <div class="paginator" style="margin-top: 40px">
+   <%= paginate @articles %>
+  </div>
 </div>
