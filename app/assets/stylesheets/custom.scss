@@ -1,6 +1,5 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "font-awesome";
 
 /* ALL */
 
@@ -18,6 +17,14 @@ a:hover{text-decoration: none;}
 
 a {
   color: rgb(34, 34, 34);
+}
+
+.paginator {
+  text-align: center;
+  margin: auto;
+}
+.pagination {
+  margin: 0px 0px 40px 0px;
 }
 
 /* articles/index */
