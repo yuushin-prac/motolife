@@ -11,17 +11,7 @@
   <% end %>
 
   <%= form_for @article do |f| %>
-    <div class="form-group">
-      <%= f.label :title , 'タイトル' %>
-      <%= f.text_field :title, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :body, '説明欄' %>
-      <%= f.text_area :body, rows: 10, class: "form-control" %>
-    </div>
-
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <%= render '/layouts/form', f: f %>
   <% end %>
   <%= link_to '削除する', article_path(@article), data: { "turbo-method": :delete, turbo_confirm: "本当に削除しますか？" }, 
                                                                                               class: 'btn btn-danger' %>

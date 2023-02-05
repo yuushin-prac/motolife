@@ -1,25 +1,36 @@
-<% provide(:sidebar_title, '投稿者') %>
-
 <div class="row" style="border-left: 1px solid rgba(0,0,0,.125)">
   
   <div class="col-sm-3">
-    <%= render '/layouts/sidebar' %>
+    <div class="sidebar">
+      <h3 class="sideMenuTitle">投稿者</h3>
+      <% if @user.profile_image_id.present? %>
+        <%= attachment_image_tag @user, :profile_image, class: 'img-responsive center-block sideMenuImage' %>
+      <% else %>
+        <%= image_tag 'no_image.png', class: 'img-responsive center-block sideMenuImage' %>
+      <% end %>
+      <h3><%= link_to @article.user.name, user_path(@user) %></h3>
+      <%= @user.self_introduction %>
+    </div>
   </div>
 
   <div class="col-sm-9 article-show">
+
     <% if @article.image_id.present? %>
       <%= attachment_image_tag @article, :image, class: 'img-responsive center-block main-image' %>
     <% else %>
       <%= image_tag 'no_image.png', class: 'img-responsive center-block main-image' %>
     <% end %>
+
     <p class="title" style="font-size: 24px"><%= @article.title %></p>
       <p><%= simple_format @article.body %></p>
     <div class="info">
       <%= @article.created_at.strftime("%Y年%m月%d日") %>
     </div>
+
     <% if user_signed_in? && @article.user_id == current_user.id %>
       <%= link_to '編集', edit_article_path(@article), class: 'btn btn-primary' %>
     <% end %>
+
   </div>
 
 </div>

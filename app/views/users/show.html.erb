@@ -4,7 +4,7 @@
     <div class="sidebar">
       <h3 class="sideMenuTitle">プロフィール</h3>
       <% if @user.profile_image_id.present? %>
-        <%= attachment_image_tag @user, :profile_image, class: 'center-block sideMenuImage' %>
+        <%= attachment_image_tag @user, :profile_image, class: 'img-responsive center-block sideMenuImage' %>
       <% else %>
         <%= image_tag 'no_image.png', class: 'img-responsive center-block sideMenuImage' %>
       <% end %>
@@ -15,31 +15,33 @@
       <% end %>
     </div>
   </div>
-<div class="col-sm-9 show-article-list">
-  <% @articles.each do |article| %>
-    <div class="show-article-box">
-      <%= link_to article do %>
-        <% if article.image_id.present? %>
-          <%= attachment_image_tag article, :image, class: 'img-responsive center-block show-article-images' %>
-        <% else %>
-          <%= image_tag 'no_image.png', class: 'img-responsive center-block show-article-images' %>
+
+  <div class="col-sm-9 show-article-list">
+    <% @articles.each do |article| %>
+      <div class="show-article-box">
+        <%= link_to article do %>
+          <% if article.image_id.present? %>
+            <%= attachment_image_tag article, :image, class: 'show-article-images' %>
+          <% else %>
+            <%= image_tag 'no_image.png', class: 'show-article-images' %>
+          <% end %>
         <% end %>
-      <% end %>
-      <div class="show-article-body">
-        <%= link_to article.title.truncate(15), article_path(article), style: 'font-size: 24px;' %>
-        <% if article.body.length > 40 %>
-          <p class="body">
-            <%= article.body.truncate(40) %>
-            <%= link_to "続きを読む", article_path(article), class: 'link' %>
-          </p>
-        <% else %>
-          <p class="body"><%= article.body %></p>
-        <% end %>
-        <p class="info" style="margin-right: 20px"><%= article.created_at.strftime("%Y年%m月%d日") %></p>
+        <div class="show-article-body">
+          <%= link_to article.title.truncate(15), article_path(article), style: 'font-size: 24px;' %>
+          <% if article.body.length > 40 %>
+            <p class="body">
+              <%= article.body.truncate(40) %>
+              <%= link_to "続きを読む", article_path(article), class: 'link' %>
+            </p>
+          <% else %>
+            <p class="body"><%= article.body %></p>
+          <% end %>
+          <p class="info" style="margin-right: 20px"><%= article.created_at.strftime("%Y年%m月%d日") %></p>
+        </div>
       </div>
+    <% end %>
+    <div class="paginator" style="margin-top: 40px">
+      <%= paginate @articles %>
     </div>
-  <% end %>
-  <div class="paginator" style="margin-top: 40px">
-   <%= paginate @articles %>
   </div>
 </div>
