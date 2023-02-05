@@ -7,7 +7,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
     @user = @article.user
   end
 
@@ -35,14 +34,14 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    unless @article.user == current_user
+      redirect_to root_path, alert: "他人の記事を編集することは出来ません"
+    end
   end
   
   def destroy
-    if @article.destroy
+    @article.destroy
       redirect_to root_path, notice: "投稿を削除しました"
-    else
-      redirect_to root_path, alert: "削除に失敗しました"
-    end
   end
 
   private

@@ -16,8 +16,6 @@ gem "bootsnap", require: false
 gem 'dotenv-rails'
 gem "rb-readline"
 gem "sass-rails"
-gem "image_processing", "~> 1.2"
-gem 'seed_dump'
 gem "bootstrap-sass"
 gem "devise"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
@@ -34,11 +32,7 @@ end
 
 group :test do
   gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
-  gem "rails-controller-testing"
-  gem 'minitest'
-  gem 'minitest-reporters'
-  gem "guard"
-  gem "guard-minitest"
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end

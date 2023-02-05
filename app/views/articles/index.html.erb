@@ -14,9 +14,9 @@
     <div class="article-box">
       <%= link_to article do %>
         <% if article.image_id.present? %>
-          <%= attachment_image_tag article, :image, class: 'img-responsive center-block article-images' %>
+          <%= attachment_image_tag article, :image, class: 'img-responsive article-images' %>
         <% else %>
-          <%= image_tag 'no_image.png', class: 'img-responsive center-block article-images' %>
+          <%= image_tag 'no_image.png', class: 'img-responsive article-images' %>
         <% end %>
       <% end %>
       <div class="article-body">

@@ -12,12 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-  if resource
-    profile = Profile.new
-    profile.user_id = resource.id
-    profile.name = params[:profile][:name]
-    profile.save
-  end
+    if resource
+      profile = Profile.new
+      profile.user_id = resource.id
+      profile.name = params[:profile][:name]
+      profile.save
+    end
   end
 
   # GET /resource/edit
