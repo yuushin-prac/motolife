@@ -4,9 +4,9 @@
     <div class="sidebar">
       <h3 class="sideMenuTitle">プロフィール</h3>
       <% if @user.profile_image_id.present? %>
-        <%= attachment_image_tag @user, :profile_image, class: 'sideMenuImage' %>
+        <%= attachment_image_tag @user, :profile_image, class: 'img-responsive center-block sideMenuImage' %>
       <% else %>
-        <%= image_tag 'no_image.png', class: 'sideMenuImage' %>
+        <%= image_tag 'no_image.png', class: 'img-responsive center-block sideMenuImage' %>
       <% end %>
       <h3><%= @user.name %></h3>
       <%= @user.self_introduction %>

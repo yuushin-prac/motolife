@@ -4,8 +4,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="form-group">
-    <%= label_tag(:profile_name, '名前') %><br />
-    <%= text_field_tag 'profile[name]', '', class: 'form-control' %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
   </div>
   
   <div class="form-group">
