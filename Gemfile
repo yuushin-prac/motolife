@@ -21,6 +21,7 @@ gem "devise"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari'
+gem 'database_cleaner'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
