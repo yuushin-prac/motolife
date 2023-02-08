@@ -5,11 +5,8 @@
   <%= form_for @user do |f| %>
     <div id="cover-image" class="form-group">
       <label class="form-label">プロフィール画像</label><br>
-      <% if @user.profile_image_id.present? %>
-        <%= attachment_image_tag @user, :profile_image, class: 'article-image img-responsive center-block' %>
-      <% else %>
-        <%= image_tag 'no_image.png', class: 'article-image' %>
-      <% end %>
+      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
+                                        class: 'article-image img-responsive center-block' %>
    </div>
   <%= f.file_field :profile_image %>
 

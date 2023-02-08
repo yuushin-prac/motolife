@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: :show
   before_action :find_user
 
   def show
@@ -12,8 +13,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "記事を更新しました"
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), notice: "プロフィールを更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

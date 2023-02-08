@@ -13,11 +13,7 @@
   <div class="col-12 col-sm-6 col-md-4 article-list">
     <div class="article-box">
       <%= link_to article do %>
-        <% if article.image_id.present? %>
-          <%= attachment_image_tag article, :image, class: 'img-responsive article-images' %>
-        <% else %>
-          <%= image_tag 'no_image.png', class: 'img-responsive article-images' %>
-        <% end %>
+        <%= attachment_image_tag article, :image, fallback: "no_image.png", class: 'img-responsive article-images' %>
       <% end %>
       <div class="article-body">
         <%= link_to article.title.truncate(20), article_path(article), style: 'font-size: 24px;' %>

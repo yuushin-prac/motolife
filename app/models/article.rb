@@ -1,7 +1,6 @@
 class Article < ApplicationRecord
-
-  belongs_to :user
-  validates :title, presence: true, length: { maximum: 255 }
+  validates :title, presence: true, length: { maximum: 64 }
   validates :body, presence: true
+  belongs_to :user
   attachment :image
 end

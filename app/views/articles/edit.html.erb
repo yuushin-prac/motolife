@@ -4,12 +4,7 @@
 <h1 class="text-center">記事の編集</h1>
 
 <div class="col-md-6 col-md-offset-3">
-  <% if @article.image_id.present? %>
-    <%= attachment_image_tag @article, :image, class: 'img-responsive center-block' %>
-  <% else %>
-    <%= image_tag 'no_image.png' %>
-  <% end %>
-
+  <%= attachment_image_tag @article, :image, fallback: "no_image.png", class: 'img-responsive center-block' %>
   <%= form_for @article do |f| %>
     <%= render '/layouts/form', f: f %>
   <% end %>

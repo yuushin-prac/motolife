@@ -3,24 +3,15 @@
   <div class="col-sm-3">
     <div class="sidebar">
       <h3 class="sideMenuTitle">投稿者</h3>
-      <% if @user.profile_image_id.present? %>
-        <%= attachment_image_tag @user, :profile_image, class: 'img-responsive center-block sideMenuImage' %>
-      <% else %>
-        <%= image_tag 'no_image.png', class: 'img-responsive center-block sideMenuImage' %>
-      <% end %>
+      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
+                                                     class: 'img-responsive center-block sideMenuImage' %>
       <h3><%= link_to @article.user.name, user_path(@user) %></h3>
       <%= @user.self_introduction %>
     </div>
   </div>
 
   <div class="col-sm-9 article-show">
-
-    <% if @article.image_id.present? %>
-      <%= attachment_image_tag @article, :image, class: 'img-responsive center-block main-image' %>
-    <% else %>
-      <%= image_tag 'no_image.png', class: 'img-responsive center-block main-image' %>
-    <% end %>
-
+    <%= attachment_image_tag @article, :image, fallback: "no_image.png", class: 'img-responsive center-block main-image' %>
     <p class="title" style="font-size: 24px"><%= @article.title %></p>
       <p><%= simple_format @article.body %></p>
     <div class="info">

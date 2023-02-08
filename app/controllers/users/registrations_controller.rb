@@ -12,6 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   # def create
   #   super
+  #   if resource.save
+  #     redirect_to root_path
+  #   else
+  #     render "new", status: :unprocessable_entity
+  #   end
   # end
 
   # GET /resource/edit
