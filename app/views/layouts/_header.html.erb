@@ -1,17 +1,18 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-inverse bg-light">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">モトlife</a>
-        <button id="nav-toggle" type="button" class="ui-navbar-toggle navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-1" aria-controls=".navbar-1" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-      <div class="collapse navbar-collapse navbar-1">
-        <ul class="nav navbar-nav navbar-right">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="nav navbar-nav">
           <% if user_signed_in? %>
             <li><%= link_to "ブログ作成", new_article_path %></li>
-            <li><%= link_to current_user.name, user_path(current_user) %></li>
+            <li data-turbo="false"><%= link_to current_user.name, user_path(current_user) %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, data: { "turbo-method": :delete,
                                                                     turbo_confirm: "モトlifeからログアウトしますか？" } %></li>
           <% else %>
@@ -23,4 +24,5 @@
       </div>
     </div>
   </nav>
+  
 </header>

@@ -1,9 +1,12 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+//= require jquery3
+//= require popper
+//= require jquery.remotipart
 import "@hotwired/turbo-rails"
 import "controllers"
 
-import jquery from "jquery"
-window.$ = jquery
+// import jquery from "jquery"
+// window.$ = jquery
 
 $(document).on('click', "#cover-image", function() {
   $("#article_image").click();

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def show
-    @articles = @user.articles.order(created_at: :desc).page(params[:page]).per(5)
+    @articles = @user.articles.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def edit
@@ -13,14 +13,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "プロフィールを更新しました"
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html{ redirect_to :user }
+        format.js
+      else
+        format.html { render :user }
+        format.js
+      end
     end
   end
 
   def destroy
+    @user.destroy
+      redirect_to root_path, notice: "アカウントを削除しました"
   end
 
   private
