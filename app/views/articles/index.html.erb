@@ -8,31 +8,35 @@
   </section>
 <% end %>
   
-<h1 class="new-articles">新規記事一覧</h1>
-<% @articles.each do |article| %>
-  <div class="col-12 col-sm-6 col-md-4 article-list">
-    <div class="article-box">
-      <%= link_to article do %>
-        <%= attachment_image_tag article, :image, fallback: "no_image.png", class: 'img-responsive article-images' %>
-      <% end %>
-      <div class="article-body">
-        <%= link_to article.title.truncate(20), article_path(article), style: 'font-size: 24px;' %>
-        <% if article.body.length > 40 %>
-          <p class="body">
-            <%= article.body.truncate(40) %>
-            <%= link_to "続きを読む", article_path(article), class: 'link' %>
+<h1 class="home-title">新規記事一覧</h1>
+<div class="row">
+  <% @articles.each do |article| %>
+    <div class="col-12 col-sm-6 col-lg-4" style="padding: 20px">
+      <div class="card mb-1 card-list">
+        <div class="card-image">
+          <%= link_to article do %>
+            <%= attachment_image_tag article, :image, fallback: "no_image.png", class: 'article-images' %>
+          <% end %>
+        </div>
+        <div class="card-body" style="padding: 12px">
+          <p class="card-text" style="font-size: 24px"><%= link_to article.title.truncate(20), article_path(article) %></p>
+          <p class="card-text">
+            <% if article.body.length > 40 %>
+              <%= article.body.truncate(40) %>
+              <%= link_to "続きを読む", article_path(article), class: 'link' %>
+            <% else %>
+              <%= article.body %>
+            <% end %>
+            <div class="info m-2">
+              <a class="link" data-turbo="false" style="margin-right: 3px" href="/users/<%= article.user.id %>">@<%= article.user.name %></a>
+              <p><%= article.created_at.strftime("%Y年%m月%d日") %></p>
+            </div>
           </p>
-        <% else %>
-          <p class="body"><%= article.body %></p>
-        <% end %>
-        <div class="info">
-          <a class="link" href="/users/<%= article.user.id %>">@<%= article.user.name %></a>
-          <p><%= article.created_at.strftime("%Y年%m月%d日") %></p>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <div class="paginator">
   <%= paginate @articles %>

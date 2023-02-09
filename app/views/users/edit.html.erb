@@ -6,17 +6,14 @@
     <div id="cover-image" class="form-group">
       <label class="form-label">プロフィール画像</label><br>
       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
-                                        class: 'article-image img-responsive center-block' %>
-   </div>
-  <%= f.file_field :profile_image %>
-
-  <%= @user.name %>
-
-  <div class="form-group">
-    <%= f.label :self_introduction, '自己紹介' %>
-    <%= f.text_area :self_introduction, rows: 10, class: "form-control" %>
-  </div>
-    
+                                        class: 'profile-image img-responsive center-block' %>
+    </div>
+    <%= f.file_field :profile_image %>
+    <%= @user.name %>
+    <div class="form-group">
+      <%= f.label :self_introduction, '自己紹介' %>
+      <%= f.text_area :self_introduction, rows: 10, class: "form-control" %>
+    </div>
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <% end %>
 </div>

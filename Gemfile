@@ -16,12 +16,13 @@ gem "bootsnap", require: false
 gem 'dotenv-rails'
 gem "rb-readline"
 gem "sass-rails"
-gem "bootstrap-sass"
+gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem "devise"
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari'
-gem 'database_cleaner'
+gem 'jquery-rails'
+gem 'remotipart'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -36,4 +37,5 @@ group :test do
   gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'faker'
+  gem 'database_cleaner'
 end
