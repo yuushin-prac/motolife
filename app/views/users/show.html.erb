@@ -26,14 +26,11 @@
         <div class="card-body" style="padding: 12px">
           <p class="card-text" style="font-size: 24px"><%= link_to article.title.truncate(20), article_path(article) %></p>
           <p class="card-text">
-            <% if article.body.length > 40 %>
-              <%= article.body.truncate(40) %>
+            <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").strip.truncate(60) %>
+            <% if strip_tags(article.content.to_s).gsub(/[\n]/,"").strip.length > 60 %>
               <%= link_to "続きを読む", article_path(article), class: 'link' %>
-            <% else %>
-              <%= article.body %>
             <% end %>
             <div class="info m-2">
-              <a class="link" data-turbo="false" style="margin-right: 3px" href="/users/<%= article.user.id %>">@<%= article.user.name %></a>
               <p><%= article.created_at.strftime("%Y年%m月%d日") %></p>
             </div>
           </p>

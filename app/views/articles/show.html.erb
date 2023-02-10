@@ -1,5 +1,4 @@
 <div class="row" style="border-left: 1px solid rgba(0,0,0,.125)">
-  
   <div class="col-sm-3">
     <div class="sidebar">
       <h3 class="sideMenuTitle">投稿者</h3>
@@ -11,15 +10,16 @@
   </div>
 
   <div class="col-sm-9 article-show">
-    <%= attachment_image_tag @article, :image, fallback: "no_image.png", class: 'main-image' %>
+    <% if @article.image_id.present? %>
+    <%= attachment_image_tag @article, :image, class: 'main-image' %>
+    <% end %>
     <div class="content">
       <p class="title" style="font-size: 24px"><%= @article.title %></p>
-      <p><%= @article.body %></p>
+      <%= @article.content %>
       <% if user_signed_in? && @article.user_id == current_user.id %>
       <%= link_to '編集', edit_article_path(@article), class: 'btn btn-primary' %>
       <% end %>
       <p style="text-align: right"><%= @article.created_at.strftime("%Y年%m月%d日") %></p>
     </div>
   </div>
-
 </div>
