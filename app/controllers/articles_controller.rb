@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.includes(:user).order(created_at: :desc).page(params[:page]).per(9)
+    @articles = Article.eager_load(:user).order(created_at: :desc).page(params[:page]).per(9).with_rich_text_content
   end
 
   def show
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :image)
+    params.require(:article).permit(:title, :body, :image, :content)
   end
 
 end
