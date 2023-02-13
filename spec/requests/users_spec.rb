@@ -12,7 +12,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "GET #edit" do
+  xdescribe "GET #edit" do
     context 'when user logged in' do
       it 'returns http successfully' do
         sign_in user

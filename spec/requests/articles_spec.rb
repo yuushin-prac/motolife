@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Articles", type: :request do
   let!(:user) { FactoryBot.create(:user) }
   let!(:article) { create(:article, user_id: user.id) }
-  let!(:sample_article) { create(:sample_article, user_id: user.id) }
+  let(:sample_article) { create(:sample_article, user_id: user.id) }
 
   describe "GET #index" do
     it 'returns correct http' do
@@ -78,11 +78,11 @@ RSpec.describe "Articles", type: :request do
     end
   end
 
-  describe "put #update" do
+  describe "PUT #update" do
     let(:update_attributes) do
       {
           title: 'update title',
-          body: 'update body'
+          content: 'update content'
       }
     end
 

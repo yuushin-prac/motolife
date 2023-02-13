@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :article do
-    title { Faker::Lorem.characters(number:10) }
-    body { Faker::Lorem.characters(number:20) }
+    title { "aaaaa" }
+    content { Faker::Lorem.characters(number:60) }
 
     trait :article_with_users do
       after(:build) do |article|
@@ -16,7 +16,7 @@ FactoryBot.define do
 
   factory :sample_article, class: Article do
     title { "ninja" }
-    body { "cool" }
+    content { "cool" }
 
     trait :invalid do
       title                {''}
