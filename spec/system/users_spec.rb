@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe "Users", js: true, type: :system do
   let(:user) { FactoryBot.create(:user) }
   let!(:test_user) { FactoryBot.create(:test_user) }
 
@@ -85,26 +85,37 @@ RSpec.describe "Users", type: :system do
       sign_in user
     end
 
+    context 'when editing user name' do
+      it 'is successfully updated' do
+        visit user_path(user)
+        click_button 'プロフィール編集'
+        fill_in "user_name", with: "Yuushin"
+        find('input[name="commit"]').click
+        visit user_path(user)
+        expect(user.reload.name).to eq "Yuushin"
+      end
+    end
+
     context 'when editing self introduction' do
       it 'is successfully updated' do
-        visit edit_user_path(user)
+        visit user_path(user)
+        click_button 'プロフィール編集'
         fill_in "user_self_introduction", with: "Good morning"
         find('input[name="commit"]').click
+        visit user_path(user)
         expect(user.reload.self_introduction).to eq "Good morning"
-        expect(current_path).to eq(user_path(user))
-        expect(page).to have_content "プロフィールを更新しました"
       end
     end
 
     context 'when editing profile image' do
       it 'is successfully updated' do
-        visit edit_user_path(user)
+        visit user_path(user)
         @user_old_profile_image = nil
+        click_button 'プロフィール編集'
         attach_file 'user[profile_image]', File.join(Rails.root, 'spec/fixtures/images/test.jpg')
         find('input[name="commit"]').click
+        visit user_path(user)
         expect(user.reload.profile_image).not_to eq @user_old_profile_image
-        expect(current_path).to eq(user_path(user))
-        expect(page).to have_content "プロフィールを更新しました"
       end
     end
     

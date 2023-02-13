@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
   
   def destroy
     @article.destroy
-      redirect_to root_path, notice: "投稿を削除しました"
+      redirect_to root_path, notice: "記事を削除しました"
   end
 
   private
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :image, :content)
+    params.require(:article).permit(:title, :content, :image)
   end
 
 end

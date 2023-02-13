@@ -6,6 +6,7 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'selenium-webdriver'
 require 'support/factory_bot'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -32,6 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.include ActionTextHelper, type: :system
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -65,7 +67,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.before(:each, type: :system) do
-    driven_by :rack_test
+    driven_by :selenium_chrome_headless
   end
 
   # DatabaseCleanerの設定
@@ -87,6 +89,11 @@ RSpec.configure do |config|
 
   config.after(:all) do
     DatabaseCleaner.clean
+  end
+
+  # テスト実行前に前回テストのscreenshotを削除する
+  config.before(:all) do
+    FileUtils.rm_rf(Dir[Rails.root.join('tmp', 'screenshots', '*')], secure: true)
   end
 
   # deviseのヘルパーメソッドをrequestsで使用できるように設定

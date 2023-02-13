@@ -48,31 +48,31 @@ RSpec.describe Article, type: :model do
     end
   end
 
-  describe 'attribute: body' do
+  describe 'attribute: content' do
     context 'when present' do
       it 'is valid' do
-        article.body = 'hellooo'
+        article.content = 'hellooo'
         expect(article).to be_valid
       end
     end
 
     context 'when empty' do
       it 'is invalid' do
-        article.body = ''
+        article.content = ''
         expect(article).to be_invalid
       end
     end
 
     context 'when blank' do
       it 'is invalid' do
-        article.body = ' '
+        article.content = ' '
         expect(article).to be_invalid
       end
     end
 
     context 'when nil' do
       it 'is invalid' do
-        article.body = nil
+        article.content = nil
         expect(article).to be_invalid
       end
     end
