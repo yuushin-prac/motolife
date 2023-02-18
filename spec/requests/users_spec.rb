@@ -12,23 +12,6 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  xdescribe "GET #edit" do
-    context 'when user logged in' do
-      it 'returns http successfully' do
-        sign_in user
-        get edit_user_path(user)
-        expect(response).to have_http_status(:success)
-      end
-    end
-
-    context 'when user not logged' do
-      it "returns 302 response" do
-        get edit_user_path(user)
-        expect(response).to have_http_status "302"
-      end
-    end
-  end
-
   describe "PUT #update" do
     it 'returns http successfully' do
       put user_path(user), params: { user: FactoryBot.attributes_for(:test_user) }

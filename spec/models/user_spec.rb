@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let!(:user) { FactoryBot.build(:user) }
   let!(:article) { build(:article, user_id: user.id) }
+  let!(:comment) { FactoryBot.build(:comment, user_id: user.id, article_id: article.id) }
 
   describe 'attribute: name' do
 

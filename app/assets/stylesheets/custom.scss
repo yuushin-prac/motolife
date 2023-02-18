@@ -123,25 +123,55 @@ a:hover{text-decoration: none;}
 
 .main-image {
   border-radius: 5px;
-  height: 300px;
+  max-height: 400px;
   display: block;
   margin: auto;
   margin-top: 40px;
   margin-bottom: 20px;
+  max-width: 100%;
 }
 
 .content {
   width: 80%;
   display: block;
   margin: auto;
+  margin-top: 20px;
 }
+
+.comment-field {
+  width: 60%;
+  display: block;
+  margin: auto;
+  //border: 1px solid rgba(0,0,0,.125);
+  //border-radius: 0.5rem;
+}
+
+.new-comment {
+  margin-bottom: 10px;
+}
+
+.comment {
+  border: 1px solid #CCCCCC;
+  padding: 7px 10px;
+}
+
+.comment-user {
+  padding-bottom: 10px;
+  border-bottom: 2px dotted rgba(0,0,0,.125);
+}
+.comment-user-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+}
+
 /* articles/_form */
 
 .article-image {
   max-height: 300px;
   width: 100%;
   object-fit: cover;
-  border: solid 1px gray;
+  border: 1px solid rgba(0,0,0,.125);
 }
 
 #cover-image {
@@ -193,6 +223,9 @@ a:hover{text-decoration: none;}
   .profile-image {
     width: 40%;
   }
+  .comment-field {
+    width: 90%;
+  }
 }
 
 /* NavBar */
@@ -200,6 +233,18 @@ a:hover{text-decoration: none;}
 .navbar{
 	margin-bottom: 0;
   border-radius: 0px;
+}
+.navbar-nav {
+  text-align: right;
+  li {
+    display: inline;
+  }
+}
+.navbar-toggler {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  z-index: 1;
 }
 .navbar-brand{
 	font-size: 25px;

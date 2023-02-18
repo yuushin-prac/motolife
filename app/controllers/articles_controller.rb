@@ -8,6 +8,10 @@ class ArticlesController < ApplicationController
 
   def show
     @user = @article.user
+    @comments = @article.comments
+    if user_signed_in?
+     @comment = current_user.comments.new
+    end
   end
 
   def new
