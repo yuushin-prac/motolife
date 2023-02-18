@@ -86,7 +86,7 @@ RSpec.describe "Users", js: true, type: :system do
     end
 
     context 'when editing user name' do
-      it 'is successfully updated' do
+      it 'is updated' do
         visit user_path(user)
         click_button 'プロフィール編集'
         fill_in "user_name", with: "Yuushin"
@@ -97,7 +97,7 @@ RSpec.describe "Users", js: true, type: :system do
     end
 
     context 'when editing self introduction' do
-      it 'is successfully updated' do
+      it 'is updated' do
         visit user_path(user)
         click_button 'プロフィール編集'
         fill_in "user_self_introduction", with: "Good morning"
@@ -108,7 +108,7 @@ RSpec.describe "Users", js: true, type: :system do
     end
 
     context 'when editing profile image' do
-      it 'is successfully updated' do
+      it 'is updated' do
         visit user_path(user)
         @user_old_profile_image = nil
         click_button 'プロフィール編集'

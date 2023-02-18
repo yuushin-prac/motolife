@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
   
   resources :articles
+  resources :articles do
+    resources :comments
+  end
   resources :users, only: [:show, :edit, :update]
   root "articles#index"
 end

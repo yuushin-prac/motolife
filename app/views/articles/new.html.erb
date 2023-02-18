@@ -1,10 +1,11 @@
 <% provide(:button_text, '新規作成') %>
 <%= render "devise/shared/error_messages", resource: @article %>
 
-<h1 class="text-center">記事の新規作成</h1>
+<h1 class="text-center" style="margin-top: 10px">記事の新規作成</h1>
 <div class="col-md-6 col-md-offset-3 new-article">
   <%= form_for @article do |f| %>
     <div id="cover-image" class="form-group">
+      <p style="margin: 0px">サムネイル</p>
       <%= image_tag 'no_image.png', class: 'article-image' %>
     </div>
     <%= f.file_field :image %>

@@ -43,7 +43,7 @@ RSpec.describe Article, type: :model do
     context 'when length is more than 64 characters' do
       it 'is invalid' do
         article.title = 'a' * 65
-        expect(article).to be_invalid;
+        expect(article).to be_invalid
       end
     end
   end

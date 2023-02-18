@@ -1,4 +1,5 @@
 <div class="row" style="border-left: 1px solid rgba(0,0,0,.125)">
+
   <div class="col-sm-3">
     <div class="sidebar">
       <h3 class="sideMenuTitle">投稿者</h3>
@@ -11,15 +12,38 @@
 
   <div class="col-sm-9 article-show">
     <% if @article.image_id.present? %>
-    <%= attachment_image_tag @article, :image, class: 'main-image' %>
+      <%= attachment_image_tag @article, :image, class: 'main-image' %>
     <% end %>
     <div class="content">
       <p class="title" style="font-size: 24px"><%= @article.title %></p>
       <%= @article.content %>
       <% if user_signed_in? && @article.user_id == current_user.id %>
-      <%= link_to '編集', edit_article_path(@article), class: 'btn btn-primary' %>
+        <%= link_to '編集', edit_article_path(@article), class: 'btn btn-primary' %>
       <% end %>
       <p style="text-align: right"><%= @article.created_at.strftime("%Y年%m月%d日") %></p>
     </div>
+    
+    <div class="comment-field">
+      <% if user_signed_in? %>
+        <div class="new-comment" id="comments-area">
+          <%= form_with(model:[@article, @comment], method: :article) do |f| %>
+            <%= f.text_area :comment_content, rows:'2', placeholder: "コメントする", style: "width: 100%" %>
+            <%= f.hidden_field :article_id, value: @article.id %> 
+            <%= f.submit "送信" %>
+          <% end %>
+        </div>
+      <% end %>
+      <% @article.comments.each do |comment| %>
+        <div class="comment">
+          <div class="comment-user">
+            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.png",
+                                                      class: 'img-responsive center-block comment-user-img' %>
+            <a data-turbo="false" href="/users/<%= comment.user.id %>"><%= comment.user.name %></a>
+          </div>
+          <%= comment.comment_content %>
+        </div>
+      <% end %>
+    </div>
   </div>
+
 </div>

@@ -8,8 +8,8 @@ RSpec.describe "Articles", js: true, type: :system do
   end
 
   describe 'create article' do
-    context 'when title and content given' do
-      it 'is successfully created' do
+    context 'when title and content present' do
+      it 'is created' do
         visit new_article_path
         count = Article.count
         fill_in "article_title", with: Faker::Lorem.characters(number: 10)
@@ -21,7 +21,7 @@ RSpec.describe "Articles", js: true, type: :system do
     end
 
     context 'when attach article image' do
-      it 'is successfully attached' do
+      it 'is attached' do
         visit new_article_path
         @default_article_image = nil
         attach_file 'article[image]', File.join(Rails.root, 'spec/fixtures/images/test.jpg')
@@ -37,7 +37,7 @@ RSpec.describe "Articles", js: true, type: :system do
   #article.contentが取れないため保留
   xdescribe 'edit article' do
     context 'when title and content arent empty' do
-      it "is successfully updated" do
+      it "is updated" do
         visit edit_article_path(article)
         fill_in "article_title", with: "hello"
         fill_in_rich_text_area "article_content", with: "qwerty"
