@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to article_path(@article), notice: 'コメントを投稿しました'
     else
-      redirect_to article_path(@article), alert: 'コメント出来ませんでした'
+      redirect_to article_path(@article), alert: 'コメントは1文字以上140文字以下にしてください'
     end
   end
 
