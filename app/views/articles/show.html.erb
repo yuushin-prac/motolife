@@ -2,7 +2,7 @@
 
   <div class="col-sm-3">
     <div class="sidebar">
-      <h3 class="sideMenuTitle">投稿者</h3>
+      <h3 class="sideMenuTitle">-投稿者-</h3>
       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
                                                      class: 'img-responsive center-block profile-image' %>
       <h3 style="text-align: center" data-turbo="false"><%= link_to @article.user.name, user_path(@user) %></h3>
