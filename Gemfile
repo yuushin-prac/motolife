@@ -46,4 +46,5 @@ end
 group :production, :staging do
   gem 'unicorn', platforms: %i[ mswin ]
   gem 'mysql2'
+  gem "aws-sdk-s3", require: false
 end
