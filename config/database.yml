@@ -16,7 +16,11 @@ test:
   database: moto_life_test
 
 production:
-  <<: *default
-  database: moto_life_production
-  username: <%= ENV["DATABASE_USERNAME"] %>
-  password: <%= ENV["DATABASE_PASSWORD"] %>
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  host: localhost
+  database: <%= ENV["MYSQL_DATABASE"] %>
+  username: <%= ENV["MYSQL_USERNAME"] %>
+  password: <%= ENV["MYSQL_PASSWORD"] %>
+  socket: <%= ENV["MYSQL_SOCKET"] %>
