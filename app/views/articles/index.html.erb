@@ -1,4 +1,10 @@
-<h1 class="home-title">新規記事一覧</h1>
+<div class="home-title">
+  <h1><%= link_to '新規記事一覧', root_path %></h1>
+  <div class="row tablist">
+    <h3 class="col"><%= link_to 'ブログ', root_path(show_blog: "true") %></h3>
+    <h3 class="col"><%= link_to '整備記録', root_path(show_maintenance_note: "true") %></h3>
+  </div>
+</div>
 <div class="row">
   <% @articles.each do |article| %>
     <div class="col-12 col-sm-6 col-lg-4" style="padding: 20px">

@@ -9,6 +9,13 @@
       <%= image_tag 'no_image.png', class: 'article-image' %>
     </div>
     <%= f.file_field :image %>
+    <div class="categories" style="margin-top: 10px">
+      <p style="margin:0">カテゴリ</p>
+      <%= f.radio_button :category, :blog %>
+      <%= f.label :category_blog, 'ブログ' %>
+      <%= f.radio_button :category, :maintenance_note %>
+      <%= f.label :category_maintenance_note, '整備記録' %>
+    </div>
     <%= render '/layouts/form', f: f %>
   <% end %>
 </div>

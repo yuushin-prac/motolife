@@ -38,6 +38,11 @@ a:hover{text-decoration: none;}
   margin-top: 20px;
 }
 
+.tablist {
+  text-align: center;
+  margin: 0px 10%;
+}
+
 .card-list {
   height: 380px;
   border: 1px solid rgba(0,0,0,.125);
@@ -75,6 +80,7 @@ a:hover{text-decoration: none;}
 /* articles/new */
 
 .new-article {
+  padding-bottom: 20px;
   margin: auto;
 }
 

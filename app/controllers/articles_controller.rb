@@ -3,7 +3,13 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.eager_load(:user).order(created_at: :desc).page(params[:page]).per(9).with_rich_text_content
+    if params[:show_blog]
+      @articles = Article.eager_load(:user).show_blog.order(created_at: :desc).page(params[:page]).per(9).with_rich_text_content
+    elsif params[:show_maintenance_note]
+      @articles = Article.eager_load(:user).show_maintenance_note.order(created_at: :desc).page(params[:page]).per(9).with_rich_text_content
+    else
+      @articles = Article.eager_load(:user).order(created_at: :desc).page(params[:page]).per(9).with_rich_text_content
+    end
   end
 
   def show
@@ -55,7 +61,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :content, :image)
+    params.require(:article).permit(:image, :category, :title, :content)
   end
 
 end
