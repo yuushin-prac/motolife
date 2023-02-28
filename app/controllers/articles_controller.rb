@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
+    #ソート機能　リファクタリング予定
     if params[:show_blog]
       @articles = Article.eager_load(:user).show_blog.order(created_at: :desc).page(params[:page]).per(9).with_rich_text_content
     elsif params[:show_maintenance_note]

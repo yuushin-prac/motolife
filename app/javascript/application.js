@@ -21,7 +21,7 @@ $(document).on('click', "#cover-image", function() {
 
 $(function(){
   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
-  $('#article_image').on('change', function(e) {
+  $(document).on('change', '#article_image', function(e) {
     var file = e.target.files[0],
         reader = new FileReader(),
         $preview = $(".article-image");
@@ -47,10 +47,10 @@ $(function(){
 });
 
 $(function(){
-  $('#profile_image').on('change', function(e) {
+  $(document).on('change', '#user_profile_image', function(e) {
     var file = e.target.files[0],
         reader = new FileReader(),
-        $preview = $(".profile_image");
+        $preview = $(".change-profile-image");
 
     if(file.type.indexOf("image") < 0){
       return false;
