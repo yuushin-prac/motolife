@@ -129,12 +129,17 @@ a:hover{text-decoration: none;}
 
 .main-image {
   border-radius: 5px;
-  max-height: 400px;
+  //max-height: 400px;
   display: block;
   margin: auto;
   margin-top: 40px;
   margin-bottom: 20px;
-  max-width: 100%;
+  max-width: 90%;
+}
+
+.title {
+  font-size: 28px;
+  border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
 .content {
@@ -226,11 +231,31 @@ a:hover{text-decoration: none;}
     max-height: 200px;
     height:200px;
   }
-  .profile-image {
-    width: 40%;
+  .main-image {
+    margin-top: 20px;
   }
   .comment-field {
     width: 90%;
+  }
+  .navbar-nav {
+    margin-top: 10px;
+    li {
+      padding: 10px 0px;
+      border-top: 1px solid rgba(0,0,0,.125);
+      border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+  }
+  .sidebar {
+    padding: 0px 10px;
+    margin-top: 10px;
+  }
+  
+  .sideMenuTitle {
+    display: none;
+  }
+  
+  .profile-image {
+    width: 20%;
   }
 }
 

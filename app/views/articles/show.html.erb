@@ -1,6 +1,6 @@
 <div class="row" style="border-left: 1px solid rgba(0,0,0,.125)">
 
-  <div class="col-sm-3">
+  <div class="col-sm-3 article-sidebar">
     <div class="sidebar">
       <h3 class="sideMenuTitle">投稿者</h3>
       <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
@@ -15,7 +15,7 @@
       <%= attachment_image_tag @article, :image, class: 'main-image' %>
     <% end %>
     <div class="content">
-      <p class="title" style="font-size: 24px"><%= @article.title %></p>
+      <p class="title"><%= @article.title %></p>
       <%= @article.content %>
       <% if user_signed_in? && @article.user_id == current_user.id %>
         <%= link_to '編集', edit_article_path(@article), class: 'btn btn-primary' %>
