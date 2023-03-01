@@ -25,6 +25,6 @@ https://motolife.blog
 ## インフラ構成図
 ![57dd07f9a2a5e9416aff4ac6f4f1f16e](https://user-images.githubusercontent.com/120924735/221784810-8a7d9dbc-87ae-4ec0-9d1d-ed6472526e67.png)
 ## 工夫した点
-* 記事内容のクオリティを上げるためRailsのAction textを用いてRich textを実装
+* 記事内容のクオリティを上げるためリッチテキストエディターを実装
 * モーダルとAjaxを用いてページ遷移せずにプロフィール編集を可能に
 
