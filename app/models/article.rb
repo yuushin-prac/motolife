@@ -3,6 +3,8 @@ class Article < ApplicationRecord
   validates :content, presence: true
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
   attachment :image
   has_rich_text :content
   enum category: { blog: 0, maintenance_note: 1 }

@@ -142,6 +142,12 @@ a:hover{text-decoration: none;}
   border-bottom: 1px solid rgba(0,0,0,.125);
 }
 
+.likes {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 25px;
+}
+
 .content {
   width: 80%;
   display: block;
@@ -164,6 +170,11 @@ a:hover{text-decoration: none;}
 .comment {
   border: 1px solid #CCCCCC;
   padding: 7px 10px;
+}
+
+.article-comment {
+  text-align: right;
+  margin: 0px;
 }
 
 .comment-user {

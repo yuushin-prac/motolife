@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users', to: 'devise/registrations#new'
   end
-  
+  resources :users, only: [:show, :edit, :update]
   resources :articles
   resources :articles do
     resources :comments
+    resource :likes, only: [:create, :destroy]
   end
-  resources :users, only: [:show, :edit, :update]
   root "articles#index"
 end
