@@ -15,10 +15,10 @@
           <% end %>
         </div>
         <div class="card-body" style="padding: 12px">
-          <p class="card-text" style="font-size: 24px"><%= link_to article.title.truncate(20), article_path(article) %></p>
+          <p class="card-text" style="font-size: 24px"><%= link_to article.title.truncate(30), article_path(article) %></p>
           <p class="card-text">
-            <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").strip.truncate(60) %>
-            <% if strip_tags(article.content.to_s).gsub(/[\n]/,"").strip.length > 60 %>
+            <%= strip_tags(article.content.to_s).gsub(/[\n]/,"").strip.truncate(40) %>
+            <% if strip_tags(article.content.to_s).gsub(/[\n]/,"").strip.length > 40 %>
               <%= link_to "続きを読む", article_path(article), class: 'link' %>
             <% end %>
             <div class="info m-2">

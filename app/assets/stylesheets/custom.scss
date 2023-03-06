@@ -44,7 +44,7 @@ a:hover{text-decoration: none;}
 }
 
 .card-list {
-  height: 380px;
+  height: 420px;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: 0.5rem;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .2);
@@ -146,6 +146,10 @@ a:hover{text-decoration: none;}
   display: flex;
   justify-content: flex-end;
   font-size: 25px;
+}
+
+.liked {
+  color: #2995f4;
 }
 
 .content {
