@@ -31,12 +31,11 @@ https://motolife.blog
 * CI/CD: GithubActions
 * Deploy: AWS
 ## ER図
+![er図](https://user-images.githubusercontent.com/120924735/223081010-5e8c9884-b80d-4047-b959-f24291c4fed5.png)
 ## インフラ構成図
-![57dd07f9a2a5e9416aff4ac6f4f1f16e](https://user-images.githubusercontent.com/120924735/221784810-8a7d9dbc-87ae-4ec0-9d1d-ed6472526e67.png)
-## 力を入れた点
+![infra](https://user-images.githubusercontent.com/120924735/223062721-45e86036-1b95-4818-a6e4-c279b118a5bb.png)
+## 力を入れた点、工夫した点
 * テスト：バックエンド部分の高いカバレッジ、Celeniumを用いた統合テスト
-* DB：学習として一対多だけでなく多対多の関係も実装
-## 工夫した点
 * 記事内容のクオリティを上げるためリッチテキストエディタを実装
 * モーダルとAjaxを用いてページ遷移せずにプロフィール編集を可能に
 ## これから
