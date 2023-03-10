@@ -90,6 +90,9 @@ a:hover{text-decoration: none;}
   margin-top: 20px;
 }
 
+.className {
+  //display: none;
+}
 /* articles/show */
 
 .sidebar {
@@ -184,11 +187,23 @@ a:hover{text-decoration: none;}
 .comment-user {
   padding-bottom: 10px;
   border-bottom: 2px dotted rgba(0,0,0,.125);
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
+
 .comment-user-img {
   height: 40px;
   width: 40px;
   border-radius: 100px;
+}
+
+/* articles/edit */
+
+.delete-button {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.2em;
 }
 
 /* articles/_form */
@@ -233,6 +248,56 @@ a:hover{text-decoration: none;}
   margin-top: 10px;
 }
 
+/* NavBar */
+
+.navbar{
+	margin-bottom: 0;
+  border-radius: 0px;
+  background-color: #00C4CC;
+}
+.navbar-nav {
+  text-align: right;
+  li {
+    display: inline;
+  }
+}
+.navbar-toggler {
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  z-index: 1;
+}
+.navbar-brand{
+	font-size: 25px;
+	font-weight: bold;
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-weight: 600;
+  padding: 15px 15px;
+}
+.nav > li > a {
+  margin-right:20px;
+  color: white;
+  position: relative;
+  font-weight: bold;
+}
+a::after {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+}
+a:hover::after {
+  bottom: -4px;
+  opacity: 1;
+  visibility: visible;
+}
+
 @media (max-width: 767px) {
   .article-list {
     border-left: none;
@@ -272,33 +337,4 @@ a:hover{text-decoration: none;}
   .profile-image {
     width: 20%;
   }
-}
-
-/* NavBar */
-
-.navbar{
-	margin-bottom: 0;
-  border-radius: 0px;
-}
-.navbar-nav {
-  text-align: right;
-  li {
-    display: inline;
-  }
-}
-.navbar-toggler {
-  position: absolute;
-  right: 0;
-  margin-right: 20px;
-  z-index: 1;
-}
-.navbar-brand{
-	font-size: 25px;
-	font-weight: bold;
-	font-family: "Open Sans", Helvetica, Arial, sans-serif;
-	font-weight: 600;
-  padding: 15px 15px;
-}
-.nav > li > a {
-  margin-right:20px;
 }

@@ -10,10 +10,10 @@ class CommentsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   Comment.find_by(id: params[:id], article_id: params[:article_id]).destroy
-  #   redirect_to article_path(params[:article_id]), alert: 'コメントを削除しました'
-  # end
+  def destroy
+    Comment.find_by(id: params[:id], article_id: params[:article_id]).destroy
+    redirect_to article_path(params[:article_id]), alert: 'コメントを削除しました'
+  end
 
   private
 

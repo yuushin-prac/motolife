@@ -2,8 +2,8 @@
 
   <div class="col-sm-3 article-sidebar">
     <div class="sidebar">
-      <h3 class="sideMenuTitle">-投稿者-</h3>
-      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
+      <h3 class="sideMenuTitle">投稿者</h3>
+      <%= attachment_image_tag @user, :profile_image, fallback: "default.png",
                                                      class: 'img-responsive center-block profile-image' %>
       <h3 style="text-align: center" data-turbo="false"><%= link_to @article.user.name, user_path(@user) %></h3>
       <%= @user.self_introduction %>
@@ -42,9 +42,15 @@
       <% @article.comments.each do |comment| %>
         <div class="comment">
           <div class="comment-user">
-            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.png",
+            <%= attachment_image_tag comment.user, :profile_image, fallback: "default.png",
                                                       class: 'img-responsive center-block comment-user-img' %>
-            <a data-turbo="false" href="/users/<%= comment.user.id %>"><%= comment.user.name %></a>
+            <a data-turbo="false" href="/users/<%= comment.user.id %>" style="padding-left: 2%"><%= comment.user.name %></a>
+            <% if user_signed_in? && comment.user_id == current_user.id %>
+              <%= link_to article_comment_path(comment.article, comment), style: "margin-left: auto",
+                                              data: { "turbo-method": :delete, turbo_confirm: "コメントを削除しますか？" } do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            <% end %>
           </div>
           <%= comment.comment_content %>
           <p class="article-comment"><%= comment.created_at.strftime("%Y年%m月%d日") %></p>

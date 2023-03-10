@@ -53,7 +53,7 @@ RSpec.describe "Articles", js: true, type: :system do
       it 'decreases the number of article' do
         visit edit_article_path(article)
         count = Article.count
-        click_on '削除する'
+        find(".fa-trash-alt").click
         page.accept_confirm
         visit root_path
         expect(Article.count).to eq (count - 1)
