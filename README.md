@@ -1,24 +1,43 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# motolife
+https://motolife.blog
+## サービス概要
+バイクにフォーカスを当てたブログサービスです。  
+ブログや整備記録などを共有することができます。
+## 制作背景  
+車に比べてバイクはネットの情報量が圧倒的に少ないです。  
+  
+例えば、バイクを整備するとして方法を調べるためにネットで検索をかけても、該当する記事が自分と同じバイクを使っていることは多くありません。 
+従って構造の違うバイクの記事を見様見真似で作業するしかない状況が多々ありました。  
+  
+そういったバイクの情報量の少なさを解消し、バイク界隈を盛り上げることが出来ればと思い、開発しました。  
+## 主な機能
+* 記事CRUD
+* 画像アップロード
+* リッチテキストエディタ
+* ユーザー登録/ログイン
+* いいね
+* コメント
+* ソート
+* ページネーション
+* 非同期通信(Ajax)
+## 使用技術
+* Ruby 3.0.2
+* Ruby on Rails 7.0.4
+* Javascript
+* JQuery
+* Rspec (model/request/system)
+* Celenium
+* PostgreSQL/MySQL
+* CI/CD: GithubActions
+* Deploy: AWS
+## ER図
+![er図](https://user-images.githubusercontent.com/120924735/223081010-5e8c9884-b80d-4047-b959-f24291c4fed5.png)
+## インフラ構成図
+![infra](https://user-images.githubusercontent.com/120924735/223062721-45e86036-1b95-4818-a6e4-c279b118a5bb.png)
+## 力を入れた点、工夫した点
+* テスト：バックエンド部分の高いカバレッジ、Celeniumを用いた統合テスト
+* 記事内容のクオリティを上げるためリッチテキストエディタを実装
+* モーダルとAjaxを用いてページ遷移せずにプロフィール編集を可能に
+## これから
+カスタム・パーツレビュー、ツーリングスポットの共有、Q&Aサービス  
+など、バイクアプリ「らしさ」を追求し、ライダーにとって使いやすく楽しいアプリを作っていきたいと考えております。
