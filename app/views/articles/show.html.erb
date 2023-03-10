@@ -3,7 +3,7 @@
   <div class="col-sm-3 article-sidebar">
     <div class="sidebar">
       <h3 class="sideMenuTitle"> 投稿者 </h3>
-      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
+      <%= attachment_image_tag @user, :profile_image, fallback: "default.png",
                                                      class: 'img-responsive center-block profile-image' %>
       <h3 style="text-align: center" data-turbo="false"><%= link_to @article.user.name, user_path(@user) %></h3>
       <%= @user.self_introduction %>
@@ -42,7 +42,7 @@
       <% @article.comments.each do |comment| %>
         <div class="comment">
           <div class="comment-user">
-            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.png",
+            <%= attachment_image_tag comment.user, :profile_image, fallback: "default.png",
                                                       class: 'img-responsive center-block comment-user-img' %>
             <a data-turbo="false" href="/users/<%= comment.user.id %>" style="padding-left: 2%"><%= comment.user.name %></a>
             <% if user_signed_in? && comment.user_id == current_user.id %>

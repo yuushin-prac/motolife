@@ -3,7 +3,7 @@
   <div class="col-md-3">
     <div class="sidebar">
       <h3 class="sideMenuTitle">プロフィール</h3>
-      <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
+      <%= attachment_image_tag @user, :profile_image, fallback: "default.png",
                                         class: 'img-responsive center-block profile-image' %>
       <h3 style="text-align: center"><%= @user.name %></h3>
       <%= @user.self_introduction %><br>
@@ -56,7 +56,7 @@
         <%= form_for @user, method: :patch, remote: true do |f| %>
           <div id="cover-image" class="form-group">
             <label class="form-label">プロフィール画像</label><br>
-            <%= attachment_image_tag @user, :profile_image, fallback: "no_image.png",
+            <%= attachment_image_tag @user, :profile_image, fallback: "default.png",
                                               class: 'change-profile-image img-responsive center-block' %>
           </div>
           <%= f.file_field :profile_image %><br>

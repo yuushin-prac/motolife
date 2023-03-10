@@ -3,9 +3,14 @@
   <%= f.text_field :title, class: "form-control" %>
 </div>
 
+<%= content_tag(:div, "", class:"pickerContainer", data: {
+  emoji_picker_target: "pickerContainer"
+}) %>
 <div class="field">
   <%= f.label :content, '内容', style: "margin-top: 10px" %>
-  <%= f.rich_text_area :content %>
+  <%= f.rich_text_area :content, data: {
+    emoji_picker_target: "trixEditor"
+  } %>
 </div>
 
 <%= f.submit yield(:button_text), class: "btn btn-primary new-button" %>

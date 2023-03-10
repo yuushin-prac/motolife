@@ -10,3 +10,5 @@ pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.2.3/dist/js/bootstrap.e
 pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.2/dist/esm/index.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
+pin "@picmo/popup-picker", to: "https://ga.jspm.io/npm:@picmo/popup-picker@5.8.0/dist/index.js"
+pin "picmo", to: "https://ga.jspm.io/npm:picmo@5.8.1/dist/index.js"
