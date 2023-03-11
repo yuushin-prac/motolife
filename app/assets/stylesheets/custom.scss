@@ -30,17 +30,46 @@ a:hover{text-decoration: none;}
   margin: auto;
 }
 
+.alert {
+  margin-top: 20px;
+}
+
 /* articles/index */
 
 .home-title {
   border-bottom:1px solid;
   padding-left: 10px;
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.tablist {
+.sort {
   text-align: center;
-  margin: 0px 10%;
+  ul {
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    li {
+      list-style: none;
+      display: inline;
+      a {
+        font-weight: bold;
+        color: #6a6a6a;
+      }
+    }
+  }
+}
+
+.sort > ul > li > a:hover {
+  color: black;
+}
+
+.sort-item {
+  margin: 0px 10px;
+  padding: 0px 10px;
+  border-left: 1px solid rgba(0,0,0,.125);
+  border-right: 1px solid rgba(0,0,0,.125);
 }
 
 .card-list {
@@ -89,11 +118,6 @@ a:hover{text-decoration: none;}
   margin: auto;
   margin-top: 20px;
 }
-
-.className {
-  //display: none;
-}
-/* articles/show */
 
 .sidebar {
   padding: 0px 10px;
@@ -280,7 +304,7 @@ a:hover{text-decoration: none;}
   position: relative;
   font-weight: bold;
 }
-a::after {
+.nav > li > a::after {
   position: absolute;
   bottom: 2px;
   left: 0;
@@ -292,7 +316,7 @@ a::after {
   visibility: hidden;
   transition: .3s;
 }
-a:hover::after {
+.nav > li > a:hover::after {
   bottom: -4px;
   opacity: 1;
   visibility: visible;
