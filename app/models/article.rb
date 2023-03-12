@@ -5,8 +5,8 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
-  attachment :image
   has_rich_text :content
+  attachment :image
   enum category: { blog: 0, maintenance_note: 1 }
 
   scope :show_blog, -> { where(category: 0) }

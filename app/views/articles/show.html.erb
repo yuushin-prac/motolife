@@ -5,7 +5,7 @@
       <h3 class="sideMenuTitle">投稿者</h3>
       <%= attachment_image_tag @user, :profile_image, fallback: "default.png",
                                                      class: 'img-responsive center-block profile-image' %>
-      <h3 style="text-align: center" data-turbo="false"><%= link_to @article.user.name, user_path(@user) %></h3>
+      <h3 style="text-align: center" data-turbo="false"><%= link_to @user.name, user_path(@user) %></h3>
       <%= @user.self_introduction %>
     </div>
   </div>
@@ -30,6 +30,7 @@
 
     <!-- コメント機能 -->
     <div class="comment-field">
+
       <% if user_signed_in? %>
         <div class="new-comment" id="comments-area">
           <%= form_with(model:[@article, @comment], method: :article) do |f| %>
@@ -39,7 +40,8 @@
           <% end %>
         </div>
       <% end %>
-      <% @article.comments.each do |comment| %>
+
+      <% @comments.each do |comment| %>
         <div class="comment">
           <div class="comment-user">
             <%= attachment_image_tag comment.user, :profile_image, fallback: "default.png",
@@ -56,7 +58,7 @@
           <p class="article-comment"><%= comment.created_at.strftime("%Y年%m月%d日") %></p>
         </div>
       <% end %>
+
     </div>
   </div>
-
 </div>

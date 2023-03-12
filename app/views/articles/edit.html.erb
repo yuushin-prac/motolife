@@ -7,11 +7,12 @@
   <% if @article.image_id.present? %>
   <%= attachment_image_tag @article, :image, class: 'img-responsive center-block', style: "width: 100%" %>
   <% end %>
-  <%= form_for @article do |f| %>
+  <%= form_with(model:@article, data: {controller: "emoji-picker"}) do |f| %>
     <%= render '/layouts/form', f: f %>
   <% end %>
   <div class="delete-button">
-    <%= link_to article_path(@article), data: { "turbo-method": :delete, turbo_confirm: "記事を削除します。よろしいですか？" } do %>
+    <%= link_to article_path(@article), 
+                data: { "turbo-method": :delete, turbo_confirm: "記事を削除します。よろしいですか？" } do %>
       <i class="far fa-trash-alt"></i>
     <% end %>
   </div>
