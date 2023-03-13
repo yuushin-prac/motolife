@@ -2,7 +2,7 @@
 https://motolife.blog
 ## サービス概要
 バイクにフォーカスを当てたブログサービスです。  
-ブログや整備記録などを共有することができます。
+ブログや整備記録などの投稿、共有、バイクニュースの閲覧などができます。
 ## 制作背景  
 車に比べてバイクはネットの情報量が圧倒的に少ないです。  
   
@@ -12,6 +12,7 @@ https://motolife.blog
 そういったバイクの情報量の少なさを解消し、バイク界隈を盛り上げることが出来ればと思い、開発しました。  
 ## 主な機能
 * 記事CRUD
+* ニュース一覧
 * 画像アップロード
 * リッチテキストエディタ
 * ユーザー登録/ログイン
@@ -25,6 +26,7 @@ https://motolife.blog
 * Ruby on Rails 7.0.4
 * Javascript
 * JQuery
+* News-API
 * Rspec (model/request/system)
 * Celenium
 * PostgreSQL/MySQL
