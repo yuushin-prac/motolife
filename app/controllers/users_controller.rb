@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :find_user
 
   def show
-    @articles = @user.articles.order(created_at: :desc).page(params[:page]).per(8).with_rich_text_content
+    @articles = @user.articles.order(created_at: :desc).paginate(page: params[:page], per_page: 9).with_rich_text_content
   end
 
   def edit

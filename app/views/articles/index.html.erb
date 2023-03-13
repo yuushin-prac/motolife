@@ -6,9 +6,9 @@
       <li class="sort-item"><%= link_to 'ブログ', root_path(show_blog: "true") %></li>
       <li><%= link_to '整備', root_path(show_maintenance_note: "true") %></li>
     </ul>
-
   </div>
 </div>
+
 <div class="row">
   <% @articles.each do |article| %>
     <div class="col-12 col-sm-6 col-lg-4" style="padding: 20px">
@@ -26,7 +26,9 @@
               <%= link_to "続きを読む", article_path(article), class: 'link' %>
             <% end %>
             <div class="info m-2">
-              <a class="link" data-turbo="false" style="margin-right: 3px" href="/users/<%= article.user.id %>">@<%= article.user.name %></a>
+              <a class="link" data-turbo="false" style="margin-right: 3px" href="/users/<%= article.user.id %>">
+                @<%= article.user.name %>
+              </a>
               <p><%= article.created_at.strftime("%Y年%m月%d日") %></p>
             </div>
           </p>

@@ -1,0 +1,29 @@
+
+<div class="col-12 col-sm-6 col-lg-4" style="padding: 20px">
+  <div class="card mb-1 card-list">
+    <div class="card-image">
+      <%= link_to news.url do %>
+        <% if news.urlToImage.present? %>
+          <%= image_tag(news.urlToImage, class: 'article-images') %>
+        <% else %>
+          <%= image_tag("no_image.png", class: 'article-images') %> 
+        <% end %>
+      <% end %>
+    </div>
+    <div class="card-body" style="padding: 12px">
+      <p class="card-text" style="font-size: 24px"><%= link_to news.title.truncate(30) %></p>
+      <p class="card-text">
+        <%= strip_tags(news.description.to_s).gsub(/[\n]/,"").strip.truncate(40) %>
+        <% if strip_tags(news.description.to_s).gsub(/[\n]/,"").strip.length > 40 %>
+          <%= link_to "続きを読む", news.url, class: 'link' %>
+        <% end %>
+        <div class="info m-2">
+          <a class="link" style="margin-right: 3px">
+            <%#= news.source.name %>
+          </a>
+          <p><%= time_ago_in_words(news.publishedAt) %>前</p>
+        </div>
+      </p>
+    </div>
+  </div>
+</div>

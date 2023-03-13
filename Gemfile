@@ -23,6 +23,9 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'image_processing'
 gem 'mini_magick'
+gem 'news-api'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   gem "pg", "~> 1.1"
