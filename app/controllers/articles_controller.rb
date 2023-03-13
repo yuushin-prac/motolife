@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.eager_load(:user).order(created_at: :desc).page(params[:page]).per(9).with_rich_text_content
+    @articles = Article.eager_load(:user).order(created_at: :desc).paginate(page: params[:page], per_page: 9).with_rich_text_content
     #ソート機能
     if params[:show_blog]
       @articles = @articles.show_blog

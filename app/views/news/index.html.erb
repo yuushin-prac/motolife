@@ -1,0 +1,12 @@
+<div class="home-title">
+  <h1><%= link_to 'ニュース一覧', news_index_path %></h1>
+  <p class="note">※注意　記事をクリックすると外部ページに移動します</p>
+</div>
+<div class="row">
+    <%= render partial: "layouts/data", collection: @news, as: "news" %>
+</div>
+
+<%= will_paginate @news, :previous_label => ' &lt 前へ', :next_label => '次へ &gt', class: "news-api" %>
+<div class="news-api">
+  Powered by<%= link_to "https://newsapi.org" do %> News API <% end %>
+</div>
