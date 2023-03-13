@@ -11,17 +11,16 @@
       <% end %>
     </div>
     <div class="card-body" style="padding: 12px">
-      <p class="card-text" style="font-size: 24px"><%= link_to news.title.truncate(30) %></p>
+      <p class="card-text" style="font-size: 24px"><%= link_to news.title.truncate(30), news.url %></p>
       <p class="card-text">
         <%= strip_tags(news.description.to_s).gsub(/[\n]/,"").strip.truncate(40) %>
         <% if strip_tags(news.description.to_s).gsub(/[\n]/,"").strip.length > 40 %>
           <%= link_to "続きを読む", news.url, class: 'link' %>
         <% end %>
         <div class="info m-2">
-          <a class="link" style="margin-right: 3px">
-            <%#= news.source.name %>
-          </a>
-          <p><%= time_ago_in_words(news.publishedAt) %>前</p>
+          <p style="margin-right: 3px">
+            <%= news.name %> <%= time_ago_in_words(news.publishedAt) %>前
+          </p>
         </div>
       </p>
     </div>
